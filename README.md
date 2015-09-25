@@ -44,6 +44,9 @@ both dependencies.
 
 ## Examples
 
-To view the examples, run `bower install` and open them in your favourite browser.
+* [Simple map](examples/simpleMap.html), see in [Plunker](http://plnkr.co/edit/qNIZaN)
+* [Own map service](examples/ownMapService.html), see in [Plunker](http://plnkr.co/edit/qRXApR)
+
+To view the examples locally, clone the repo, run `bower install` and open them in your favourite browser.
 
 CleverAnalytics uses this module in production. Feel free to try the demo at [https://demo.cleveranalytics.com](https://demo.cleveranalytics.com).

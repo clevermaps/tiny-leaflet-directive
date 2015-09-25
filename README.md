@@ -7,6 +7,12 @@ module.
 
 ## Usage
 
+Install with Bower and include script in `index.html`:
+
+```bash
+bower install tiny-leaflet-directive
+```
+
 Include `tiny-leaflet-directive` module in your app dependencies:
 
 ```javascript

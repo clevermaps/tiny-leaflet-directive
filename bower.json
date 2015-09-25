@@ -1,0 +1,25 @@
+{
+  "name": "tiny-leaflet-directive",
+  "version": "0.0.1",
+  "authors": [
+    "Martin Tesar <osmmtb@gmail.com>"
+  ],
+  "description": "Tiny LeafletJS map directive for your AngularJS apps",
+  "main": "dist/tiny-leaflet-directive.js",
+  "keywords": [
+    "LeafletJS",
+    "AngularJS",
+    "map",
+    "directive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "leaflet": "~0.7.0"
+  }
+}

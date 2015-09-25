@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="example">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/leaflet/dist/leaflet-src.js"></script>
+
+    <script src="../src/tld.module.js"></script>
+    <script src="../src/tldDefaults.service.js"></script>
+    <script src="../src/tldHelpers.service.js"></script>
+    <script src="../src/tldMap.service.js"></script>
+    <script src="../src/tldMap.directive.js"></script>
+
+    <script>
+      angular
+          .module('example', ['tiny-leaflet-directive'])
+          .controller('ExampleController', ExampleController);
+
+      ExampleController.$inject = ['$scope'];
+      function ExampleController($scope) {
+        $scope.mapOptions = {
+          center: [49.2, 16.6],
+          zoom: 10,
+          layers: [L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {})]
+        };
+      }
+    </script>
+
+    <style type="text/css">
+      .tld-map {
+        width:100%;
+        height: 480px;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="ExampleController">
+    <h1>Simple map example</h1>
+    <tld-map id="map" tld-options="::mapOptions"></tld-map>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="example">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/leaflet/dist/leaflet-src.js"></script>
+
+    <script src="../src/tld.module.js"></script>
+    <script src="../src/tldDefaults.service.js"></script>
+    <script src="../src/tldHelpers.service.js"></script>
+    <script src="../src/tldMap.service.js"></script>
+    <script src="../src/tldMap.directive.js"></script>
+
+    <script>
+      angular
+          .module('example', ['tiny-leaflet-directive'])
+          .service('exampleMapService', exampleMapService)
+          .controller('ExampleController', ExampleController);
+
+      exampleMapService.$inject = ['tldMapService', '$log'];
+
+      // Own map service that gets map objects from tiny-leaflet-directive
+      // and handles other map business logic
+      function exampleMapService(tldMapService, $log) {
+        return {
+          addCustomMarker: addCustomMarker,
+          logOnMoveEnd: logOnMoveEnd
+        };
+
+        function addCustomMarker(lat, lng) {
+          tldMapService.getMap('map').then(function(map) {
+            map.addLayer(L.marker(L.latLng(lat, lng)))
+          })
+        }
+
+        function logOnMoveEnd() {
+          tldMapService.getMap('map').then(function(map) {
+            map.on('moveend', logCenter, map)
+          });
+
+          function logCenter() {
+            $log.info('Map center after moveend event:', this.getCenter().toString());
+          }
+        }
+      }
+
+
+      ExampleController.$inject = ['$scope', 'exampleMapService'];
+
+      function ExampleController($scope, exampleMapService) {
+        $scope.mapOptions = {
+          center: [49.2, 16.6],
+          zoom: 10,
+          layers: [L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {})]
+        };
+
+        exampleMapService.addCustomMarker(49.2, 16.6);
+        exampleMapService.logOnMoveEnd();
+      }
+    </script>
+
+    <style type="text/css">
+      .tld-map {
+        width:100%;
+        height: 480px;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="ExampleController">
+    <h1>Map with own map service</h1>
+    <p>
+      Example of own map service that gets map object from tiny-leaflet-directive
+      and handles other map business logic.
+    </p>
+    <p>
+      It adds simple marker in the center of map and logs map center coordinates
+      into console every time you move your map. Dive into the source code of
+      <b>ownMapService.html</b> to see how it's done.
+    </p>
+    <tld-map id="map" tld-options="::mapOptions"></tld-map>
+  </body>
+</html>

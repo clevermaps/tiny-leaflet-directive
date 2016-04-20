@@ -1,7 +1,7 @@
 /**
  * Tiny Leaflet Directive, tiny LeafletJS map directive for your AngularJS apps.
- * (c) 2015, CleverAnalytics, s.r.o. http://cleveranalytics.com
- * Version: 0.0.2
+ * (c) 2015-2016, CleverAnalytics, s.r.o. http://cleveranalytics.com
+ * Version: 0.0.3
  * License: MIT
  */
 (function() {

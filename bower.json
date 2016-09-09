@@ -22,7 +22,7 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "angular": "^1.4",
+    "angular": "^1.5",
     "leaflet": "~0.7.0"
   }
 }

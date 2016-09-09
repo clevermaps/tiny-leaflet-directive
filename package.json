@@ -1,7 +1,7 @@
 {
   "name": "tiny-leaflet-directive",
-  "version": "0.0.4",
-  "description": "Tiny LeafletJS map directive for your AngularJS apps",
+  "version": "0.1.0",
+  "description": "Tiny LeafletJS map component for your AngularJS apps",
   "main": "dist/tiny-leaflet-directive.js",
   "directories": {
     "example": "examples"
@@ -17,6 +17,7 @@
     "LeafletJS",
     "AngularJS",
     "map",
+    "component",
     "directive"
   ],
   "author": "Martin Tesar <osmmtb@gmail.com>",

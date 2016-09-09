@@ -56,3 +56,14 @@ both dependencies.
 To view the examples locally, clone the repo, run `bower install` and open them in your favourite browser.
 
 CleverAnalytics uses this module in production. Feel free to try the demo at [https://demo.cleveranalytics.com](https://demo.cleveranalytics.com).
+
+## Changelog
+
+### 2016-09-09 Version 0.1.0
+
+* Rewritten `angular.directive` to `angular.component`
+* WARNING: DOM of this component has changed, make sure to check/update your CSS (from `<div id="map" class="tld-map"></div>` to `<tld-map id="map"><div class="tld-map"></div></tld-map>`)
+
+### 2016-09-06 Version 0.0.4
+
+* Published to NPM

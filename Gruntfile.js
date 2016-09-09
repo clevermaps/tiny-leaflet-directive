@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         targetDir = 'dist/',
         name = '<%= pkg.name %>',
         bannerContent = '/**\n' +
-                ' * Tiny Leaflet Directive, tiny LeafletJS map directive for your AngularJS apps.\n' +
+                ' * Tiny Leaflet Directive, tiny LeafletJS map component for your AngularJS apps.\n' +
                 ' * (c) 2015-2016, CleverAnalytics, s.r.o. http://cleveranalytics.com\n' +
                 ' * Version: <%= pkg.version %>\n' +
                 ' * License: <%= pkg.license %>\n' +

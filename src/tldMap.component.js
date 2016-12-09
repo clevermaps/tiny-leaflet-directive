@@ -26,18 +26,26 @@
         tldDefaults,
         tldHelpers
     ) {
+        var ctrl = this;
         var id = tldHelpers.getMapId({}, $attrs.id);
-        var mapDefaults = tldDefaults.setMapDefaults(this.options, id);
-        var map = new L.Map($element.children('.tld-map')[0], mapDefaults);
+        var map;
 
-        // Resolve the map object to the promises
-        map.whenReady(function() {
-            tldMapService.setMap(map, id);
-        });
+        ctrl.$onInit = onInit;
+        ctrl.$onDestroy = onDestroy;
 
-        this.$onDestroy = function() {
+        function onInit() {
+            var mapDefaults = tldDefaults.setMapDefaults(ctrl.options, id);
+            map = new L.Map($element.children('.tld-map')[0], mapDefaults);
+
+            // Resolve the map object to the promises
+            map.whenReady(function() {
+                tldMapService.setMap(map, id);
+            });
+        }
+
+        function onDestroy() {
             map.remove();
             tldMapService.unresolveMap(id);
-        };
+        }
     }
 })();

@@ -1,7 +1,7 @@
 /**
  * Tiny Leaflet Directive, tiny LeafletJS map component for your AngularJS apps.
  * (c) 2015-2016, CleverAnalytics, s.r.o. http://cleveranalytics.com
- * Version: 0.1.0
+ * Version: 0.1.1
  * License: MIT
  */
 (function() {
@@ -127,19 +127,27 @@
         tldDefaults,
         tldHelpers
     ) {
+        var ctrl = this;
         var id = tldHelpers.getMapId({}, $attrs.id);
-        var mapDefaults = tldDefaults.setMapDefaults(this.options, id);
-        var map = new L.Map($element.children('.tld-map')[0], mapDefaults);
+        var map;
 
-        // Resolve the map object to the promises
-        map.whenReady(function() {
-            tldMapService.setMap(map, id);
-        });
+        ctrl.$onInit = onInit;
+        ctrl.$onDestroy = onDestroy;
 
-        this.$onDestroy = function() {
+        function onInit() {
+            var mapDefaults = tldDefaults.setMapDefaults(ctrl.options, id);
+            map = new L.Map($element.children('.tld-map')[0], mapDefaults);
+
+            // Resolve the map object to the promises
+            map.whenReady(function() {
+                tldMapService.setMap(map, id);
+            });
+        }
+
+        function onDestroy() {
             map.remove();
             tldMapService.unresolveMap(id);
-        };
+        }
     }
 })();
 

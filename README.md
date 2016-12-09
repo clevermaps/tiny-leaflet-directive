@@ -59,6 +59,12 @@ CleverAnalytics uses this module in production. Feel free to try the demo at [ht
 
 ## Changelog
 
+### 2016-12-09 Version 0.1.1
+
+* Rewrite `tldMap` controller to work with Angular 1.6
+* Update `bower.json` to enable Leaflet 1.x
+* Still backwards compatible with Leaflet 0.7.x and Angular 1.5+
+
 ### 2016-09-09 Version 0.1.0
 
 * Rewritten `angular.directive` to `angular.component`
